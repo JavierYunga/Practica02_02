@@ -7,6 +7,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Docente;
 import vista.VentanaDocente;
 
 /**
@@ -17,6 +20,7 @@ public class EventoDocente implements ActionListener{
     
     private VentanaDocente ventanaDocente;
     private GestionDato gD;
+    
 
     public EventoDocente(VentanaDocente ventanaDocente) {
         this.ventanaDocente = ventanaDocente;
@@ -42,8 +46,18 @@ public class EventoDocente implements ActionListener{
     
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-       
+    public void actionPerformed(ActionEvent ae) 
+    {
+        List<Docente> dL = new ArrayList<Docente>();
+        int co=Integer.parseInt(this.ventanaDocente.getTxtList().get(0).getText());
+        String no= this.ventanaDocente.getTxtList().get(1).getText();
+        String ce= this.ventanaDocente.getTxtList().get(2).getText();
+        Docente d = new Docente (co,no,ce);
+        dL.add(d);
+        this.ventanaDocente.getGestionDato().persistirDocenteList(dL);
+        Object[][]datosDocentes=this.ventanaDocente.cargaDatosTabla(this.ventanaDocente.getGestionDato().LeerDocenteList().size(), 3);
+        this.ventanaDocente.setDatos(datosDocentes);
+        this.ventanaDocente.getModeloTabla().setDataVector(this.ventanaDocente.getDatos(), this.ventanaDocente.getEncabezado());
     }
     
 }

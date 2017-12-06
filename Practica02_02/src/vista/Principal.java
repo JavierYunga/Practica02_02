@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.GestionDato;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Curso;
@@ -27,8 +28,11 @@ public class Principal {
         List<Docente> dL = new ArrayList<Docente>();
         List<Materia> mL = new ArrayList<Materia>();
         List<Curso> cL = new ArrayList<Curso>();
-        
-        GestionDato gD = new GestionDato(dL, mL, cL);
+        File archivo = new File("C:\\Archivo");
+        File archivoDocente = new File("C:\\Archivo\\docentes.txt");
+        File archivoMateria = new File("C:\\Archivo\\materias.txt");
+        File archivoCurso = new File("C:\\Archivo\\cursos.txt");
+        GestionDato gD = new GestionDato(dL, mL, cL,archivoDocente,archivoMateria,archivoCurso);
         VentanaPrincipal v = new VentanaPrincipal("Archivos de Texto",gD);
         v.setVisible(true);
         

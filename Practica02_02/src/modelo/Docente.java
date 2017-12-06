@@ -40,6 +40,11 @@ public class Docente {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+    @Override
+    public String toString() {
+        return  codigo + "/" + nombre + "/" + cedula ;
+    }
     
     
     
