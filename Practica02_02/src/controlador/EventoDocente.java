@@ -48,6 +48,8 @@ public class EventoDocente implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) 
     {
+        if(ae.getSource().equals(this.ventanaDocente.getBoton()))
+        {
         List<Docente> dL = new ArrayList<Docente>();
         int co=Integer.parseInt(this.ventanaDocente.getTxtList().get(0).getText());
         String no= this.ventanaDocente.getTxtList().get(1).getText();
@@ -58,6 +60,12 @@ public class EventoDocente implements ActionListener{
         Object[][]datosDocentes=this.ventanaDocente.cargaDatosTabla(this.ventanaDocente.getGestionDato().LeerDocenteList().size(), 3);
         this.ventanaDocente.setDatos(datosDocentes);
         this.ventanaDocente.getModeloTabla().setDataVector(this.ventanaDocente.getDatos(), this.ventanaDocente.getEncabezado());
+        }
+        if(ae.getActionCommand().equals("Limpiar")){
+            this.ventanaDocente.getTxtList().get(0).setText(" ");
+            this.ventanaDocente.getTxtList().get(1).setText(" ");
+            this.ventanaDocente.getTxtList().get(2).setText(" ");
+        }
     }
     
 }
