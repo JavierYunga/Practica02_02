@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practica02_02.controlador;
+package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import practica02_02.vista.VentanaPrincipal;
+import vista.VentanaPrincipal;
 
 /**
  *
