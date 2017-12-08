@@ -29,10 +29,7 @@ public class Principal {
         List<Materia> mL = new ArrayList<Materia>();
         List<Curso> cL = new ArrayList<Curso>();
         File archivo = new File("C:\\Archivo");
-        File archivoDocente = new File("C:\\Archivo\\docentes.txt");
-        File archivoMateria = new File("C:\\Archivo\\materias.txt");
-        File archivoCurso = new File("C:\\Archivo\\cursos.txt");
-        GestionDato gD = new GestionDato(dL, mL, cL,archivoDocente,archivoMateria,archivoCurso);
+        GestionDato gD = new GestionDato(dL, mL, cL);
         VentanaPrincipal v = new VentanaPrincipal("Archivos de Texto",gD);
         v.setVisible(true);
         

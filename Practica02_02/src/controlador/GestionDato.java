@@ -26,43 +26,15 @@ public class GestionDato {
     private List<Docente> docenteList;
     private List<Materia> materiaList;
     private List<Curso> cursoList;
-    private File datosDocentes;
-    private File datosMaterias;
-    private File datosCursos;
-
-    public GestionDato(List<Docente> docenteList, List<Materia> materiaList, List<Curso> cursoList, File datosDocentes, File datosMaterias, File datosCursos) {
+   
+    public GestionDato(List<Docente> docenteList, List<Materia> materiaList, List<Curso> cursoList) {
         this.docenteList = docenteList;
         this.materiaList = materiaList;
         this.cursoList = cursoList;
-        this.datosDocentes = datosDocentes;
-        this.datosMaterias = datosMaterias;
-        this.datosCursos = datosCursos;
+       
     }
 
-    public File getDatosDocentes() {
-        return datosDocentes;
-    }
-
-    public void setDatosDocentes(File datosDocentes) {
-        this.datosDocentes = datosDocentes;
-    }
-
-    public File getDatosMaterias() {
-        return datosMaterias;
-    }
-
-    public void setDatosMaterias(File datosMaterias) {
-        this.datosMaterias = datosMaterias;
-    }
-
-    public File getDatosCursos() {
-        return datosCursos;
-    }
-
-    public void setDatosCursos(File datosCursos) {
-        this.datosCursos = datosCursos;
-    }
-
+  
 
     public List<Docente> getDocenteList() {
         return docenteList;
@@ -94,7 +66,7 @@ public class GestionDato {
     {
        
         try{
-            FileWriter ae =new FileWriter (datosDocentes.getAbsolutePath() ,true);
+            FileWriter ae =new FileWriter ("C:\\Archivo//docentes.txt" ,true);
             BufferedWriter escritura = new BufferedWriter (ae);
             for(Docente d: docenteList){
                
@@ -119,7 +91,7 @@ public class GestionDato {
      public List<Docente> LeerDocenteList(){
         try{
             List<Docente> d= new ArrayList<Docente>();
-            FileReader ae = new FileReader(datosDocentes.getAbsolutePath());
+            FileReader ae = new FileReader("C:\\Archivo//docentes.txt");
             BufferedReader lectura = new BufferedReader(ae); 
             String linea;
             
