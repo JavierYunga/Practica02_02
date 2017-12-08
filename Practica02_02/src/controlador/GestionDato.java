@@ -56,35 +56,13 @@ public class GestionDato {
     public void setCursoList(List<Curso> cursoList) {
         this.cursoList = cursoList;
     }
-   
-    
-    public boolean persistirDocenteList (List<Docente> personaList)
+    public boolean addCurso(Curso c)
     {
-       
-        try{
-            FileWriter ae =new FileWriter ("C:\\Archivo//docentes.txt" ,true);
-            BufferedWriter escritura = new BufferedWriter (ae);
-            for(Docente d: docenteList){
-               
-                escritura.append(d.toString());
-                escritura.newLine();
-                
-            }
-            escritura.close();
-            return true;
-        }catch (IOException e1)
-        {
-           return false; 
-          
-        }   
+        boolean retorno;
+        retorno=this.cursoList.add(c);
+        return retorno;
     }
-    
-    public Docente metodo(String linea){
-        String[] lineaArray= linea.split(" ");
-        Docente d = new Docente(Integer.parseInt(lineaArray[0]),lineaArray[1], lineaArray[2]);
-        return d;
-    }
-    
+
     public Curso metodo2(String linea)
     {
         String[] partes= linea.split(" ");
@@ -112,33 +90,8 @@ public class GestionDato {
         return null;
        
     }
-    
-     public List<Docente> LeerDocenteList(){
-        try{
-            List<Docente> d= new ArrayList<Docente>();
-            FileReader ae = new FileReader("C:\\Archivo//docentes.txt");
-            BufferedReader lectura = new BufferedReader(ae); 
-            String linea;
-            
-            
-            while((linea=lectura.readLine())!=null){
-                
-                d.add(this.metodo(linea));
+     
    
-            }
-             
-            lectura.close();
-                
-            return d;
-            
-                
-        }
-        catch(IOException e){
-            return null;
-        }
-    }
-     
-     
      public boolean persistCursoList(List<Curso> cursoList) throws IOException
     {
         boolean retorno=true;
@@ -194,13 +147,59 @@ public class GestionDato {
             return null;
         }
     }
-     
-     
-    public boolean addCurso(Curso c)
+     public boolean persistDocenteList(List<Docente> docenteList) throws IOException
     {
-        boolean retorno;
-        retorno=this.cursoList.add(c);
+        boolean retorno=true;
+        File directorio=new File("C:/Docente");
+        System.out.print((directorio.getPath()));
+        if(!directorio.exists())
+        {
+            directorio.mkdir();
+        }
+        for(Docente d:docenteList)
+        {
+            try
+            {
+                FileWriter ae=new FileWriter("C:/Docente/DatosDocente.txt",true);
+                BufferedWriter escritura= new BufferedWriter(ae);
+                
+                escritura.append(d.toString());
+                escritura.newLine();
+         
+                escritura.close();
+                retorno=true;
+            }catch(IOException e1)
+            {
+                retorno=false;
+            }
+        }
+        
         return retorno;
     }
+     
+    public List<Docente> LeerDocenteList()
+    {
+        try
+        {
+            List<Docente> d= new ArrayList<Docente>();
+            FileReader ae = new FileReader("C:/Docente/DatosDocente.txt");
+            BufferedReader lectura = new BufferedReader(ae); 
+            String linea;
+            
+            
+           
+             
+            lectura.close();
+                
+            return d;
+                
+        }
+        catch(IOException e){
+            return null;
+        }
+    }
+     
+     
+    
     
 }

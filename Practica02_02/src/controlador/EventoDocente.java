@@ -12,7 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Curso;
 import modelo.Docente;
+import modelo.Materia;
 import vista.VentanaDocente;
 
 /**
@@ -22,8 +27,6 @@ import vista.VentanaDocente;
 public class EventoDocente implements ActionListener{
     
     private VentanaDocente ventanaDocente;
-    private GestionDato gD;
-    
 
     public EventoDocente(VentanaDocente ventanaDocente) {
         this.ventanaDocente = ventanaDocente;
@@ -36,39 +39,44 @@ public class EventoDocente implements ActionListener{
     public void setVentanaDocente(VentanaDocente ventanaDocente) {
         this.ventanaDocente = ventanaDocente;
     }
-
-    public GestionDato getgD() {
-        return gD;
-    }
-
-    public void setgD(GestionDato gD) {
-        this.gD = gD;
-    }
-    
-    
-    
-
     @Override
-    public void actionPerformed(ActionEvent ae) 
+    public void actionPerformed(ActionEvent e) 
     {
-        if(ae.getSource().equals(this.ventanaDocente.getBoton()))
-        {
-        List<Docente> dL = new ArrayList<Docente>();
-        int co=Integer.parseInt(this.ventanaDocente.getTxtList().get(0).getText());
-        String no= this.ventanaDocente.getTxtList().get(1).getText();
-        String ce= this.ventanaDocente.getTxtList().get(2).getText();
-        Docente d = new Docente (co,no,ce);
-        dL.add(d);
-        this.ventanaDocente.getGestionDato().persistirDocenteList(dL);
-        Object[][]datosDocentes=this.ventanaDocente.cargaDatosTabla(this.ventanaDocente.getGestionDato().LeerDocenteList().size(), 3);
-        this.ventanaDocente.setDatos(datosDocentes);
+       try{
+      
+       if (e.getSource().equals(this.ventanaDocente.getBoton()))
+       {
+           
+           int codigo=Integer.parseInt(this.ventanaDocente.getTxtList().get(0).getText());
+           codigo=codigo;
+           String nombre=this.ventanaDocente.getTxtList().get(1).getText();
+           nombre=nombre;
+           String cedula=this.ventanaDocente.getTxtList().get(2).getText();
+           cedula=cedula;
+           Docente d=new Docente(codigo,nombre,cedula);
+           JOptionPane.showMessageDialog(this.ventanaDocente,"Guardado");
+           ventanaDocente.getGestionDato().getDocenteList().add(d);
+           try {
+                this.ventanaDocente.getGestionDato().persistDocenteList(this.ventanaDocente.getGestionDato().getDocenteList());
+           } catch (IOException ex) {
+                Logger.getLogger(EventoDocente.class.getName()).log(Level.SEVERE, null, ex);
+           }
+                           
+                                
+        }
+        this.ventanaDocente.getGestionDato().LeerCursoList();
+       
+        Object[][]datosCurso=this.ventanaDocente.cargaDatosTabla(this.ventanaDocente.getGestionDato().getDocenteList().size(),3);
+        this.ventanaDocente.setDatos(datosCurso);
         this.ventanaDocente.getModeloTabla().setDataVector(this.ventanaDocente.getDatos(), this.ventanaDocente.getEncabezado());
-        }
-        if(ae.getActionCommand().equals("Limpiar")){
-            this.ventanaDocente.getTxtList().get(0).setText(" ");
-            this.ventanaDocente.getTxtList().get(1).setText(" ");
-            this.ventanaDocente.getTxtList().get(2).setText(" ");
-        }
+       
+       } catch (NumberFormatException ex) {
+         JOptionPane.showMessageDialog(this.ventanaDocente, "Mal ingreso de datos");
+       }
     }
+    
+    
+    
+
     
 }

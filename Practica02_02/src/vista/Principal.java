@@ -29,17 +29,6 @@ public class Principal {
         List<Materia> mL = new ArrayList<Materia>();
         List<Curso> cL = new ArrayList<Curso>();
        
-        Docente d1=new Docente(101,"Pepe Sanchez","0102456789");
-        Docente d2=new Docente(102,"Juan Diaz","0102426719");
-       
-        Materia m1=new Materia("Matematicas",120,130);
-        Materia m2=new Materia("Programacion",160,120);
-       
-        
-        dL.add(d1);
-        dL.add(d2);
-        mL.add(m1);
-        mL.add(m2);
         
         GestionDato gD = new GestionDato(dL, mL,cL);
         VentanaPrincipal v = new VentanaPrincipal("Archivos de Texto",gD);

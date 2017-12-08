@@ -43,8 +43,10 @@ public class Docente {
 
     @Override
     public String toString() {
-        return  codigo + "/" + nombre + "/" + cedula ;
+        return  codigo + " " + nombre + " " + cedula;
     }
+
+    
     
     
     
