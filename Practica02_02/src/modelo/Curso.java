@@ -7,13 +7,32 @@ package modelo;
  */
 public class Curso {
     
+    private String nombre;
+    private String numEstudiantes;   
+
     private Docente docente;
     private Materia materia;
-    private int numEstudiantes;   
 
-    public Curso(Docente docente, Materia materia, int numEstudiantes) {
+    public Curso(String nombre, String numEstudiantes, Docente docente, Materia materia) {
+        this.nombre = nombre;
+        this.numEstudiantes = numEstudiantes;
         this.docente = docente;
         this.materia = materia;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNumEstudiantes() {
+        return numEstudiantes;
+    }
+
+    public void setNumEstudiantes(String numEstudiantes) {
         this.numEstudiantes = numEstudiantes;
     }
 
@@ -33,16 +52,14 @@ public class Curso {
         this.materia = materia;
     }
 
-    public int getNumEstudiantes() {
-        return numEstudiantes;
+    @Override
+    public String toString() {
+        return nombre+" " +numEstudiantes+" " +materia.getNombre()+" "+docente.getNombre();
     }
+    
+    
 
-    public void setNumEstudiantes(int numEstudiantes) {
-        this.numEstudiantes = numEstudiantes;
-    }
     
-    
-    
-    
+   
     
 }

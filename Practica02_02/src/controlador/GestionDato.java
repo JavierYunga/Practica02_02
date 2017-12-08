@@ -26,15 +26,12 @@ public class GestionDato {
     private List<Docente> docenteList;
     private List<Materia> materiaList;
     private List<Curso> cursoList;
-   
+
     public GestionDato(List<Docente> docenteList, List<Materia> materiaList, List<Curso> cursoList) {
         this.docenteList = docenteList;
         this.materiaList = materiaList;
         this.cursoList = cursoList;
-       
     }
-
-  
 
     public List<Docente> getDocenteList() {
         return docenteList;
@@ -59,9 +56,8 @@ public class GestionDato {
     public void setCursoList(List<Curso> cursoList) {
         this.cursoList = cursoList;
     }
-    public boolean addDocente(Docente d){
-        return this.docenteList.add(d);
-    }
+   
+    
     public boolean persistirDocenteList (List<Docente> personaList)
     {
        
@@ -84,10 +80,39 @@ public class GestionDato {
     }
     
     public Docente metodo(String linea){
-        String[] lineaArray= linea.split(" / ");
+        String[] lineaArray= linea.split(" ");
         Docente d = new Docente(Integer.parseInt(lineaArray[0]),lineaArray[1], lineaArray[2]);
         return d;
     }
+    
+    public Curso metodo2(String linea)
+    {
+        String[] partes= linea.split(" ");
+        String nombre=partes[0];
+        String numAl=partes[1];
+        String doc=partes[2];
+        String mat=partes[3];
+        for (Docente d:docenteList) 
+        {
+            if (doc.equals(d.getNombre()))
+            {
+                for (Materia m:materiaList) 
+                {
+                    if (mat.equals(m.getNombre()))
+                    {
+                        Curso c = new Curso(nombre,numAl,d,m);
+                        return c;   
+                    }
+                }
+            }
+                
+                
+            
+        }
+        return null;
+       
+    }
+    
      public List<Docente> LeerDocenteList(){
         try{
             List<Docente> d= new ArrayList<Docente>();
@@ -111,6 +136,71 @@ public class GestionDato {
         catch(IOException e){
             return null;
         }
+    }
+     
+     
+     public boolean persistCursoList(List<Curso> cursoList) throws IOException
+    {
+        boolean retorno=true;
+        File directorio=new File("C:/Curso");
+        System.out.print((directorio.getPath()));
+        if(!directorio.exists())
+        {
+            directorio.mkdir();
+        }
+        for(Curso c:cursoList)
+        {
+            try
+            {
+                FileWriter ae=new FileWriter("C:/Curso/DatosCurso.txt",true);
+                BufferedWriter escritura= new BufferedWriter(ae);
+                
+                escritura.append(c.toString());
+                escritura.newLine();
+         
+                escritura.close();
+                retorno=true;
+            }catch(IOException e1)
+            {
+                retorno=false;
+            }
+        }
+        
+        return retorno;
+    }
+     
+    public List<Curso> LeerCursoList()
+    {
+        try
+        {
+            List<Curso> c= new ArrayList<Curso>();
+            FileReader ae = new FileReader("C:/Curso/DatosCurso.txt");
+            BufferedReader lectura = new BufferedReader(ae); 
+            String linea;
+            
+            
+            while((linea=lectura.readLine())!=null)
+            {
+                c.add(this.metodo2(linea));
+   
+            }
+             
+            lectura.close();
+                
+            return c;
+                
+        }
+        catch(IOException e){
+            return null;
+        }
+    }
+     
+     
+    public boolean addCurso(Curso c)
+    {
+        boolean retorno;
+        retorno=this.cursoList.add(c);
+        return retorno;
     }
     
 }

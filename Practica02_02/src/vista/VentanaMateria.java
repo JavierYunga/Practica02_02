@@ -52,9 +52,9 @@ public class VentanaMateria extends JInternalFrame{
      public void iniciaComponente(){
          
          this.etiList = new ArrayList<JLabel>();
-        this.etiList.add(new JLabel("Ingrese el Nombre"));
-        this.etiList.add(new JLabel("Ingrese la Nota"));
-        this.etiList.add(new JLabel("Ingrese el Tema"));
+        this.etiList.add(new JLabel("Nombre"));
+        this.etiList.add(new JLabel("Horas"));
+        this.etiList.add(new JLabel("Creditos"));
         
         this.txtList = new ArrayList<JTextField>();
         this.txtList.add(new JTextField(10));
@@ -68,8 +68,8 @@ public class VentanaMateria extends JInternalFrame{
         
         this.encabezado = new Object[3];
         this.encabezado[0]="Nombre";
-        this.encabezado[1]="Nota";
-        this.encabezado[2]="Tema";
+        this.encabezado[1]="Horas";
+        this.encabezado[2]="Creditos";
         
         this.datos = cargaDatosTabla(this.gestionDato.getDocenteList().size(),3);
         
@@ -103,8 +103,8 @@ public class VentanaMateria extends JInternalFrame{
         for(Materia m:this.gestionDato.getMateriaList())
         {
             retorno[i][0]=m.getNombre();
-            retorno[i][1]=m.getNota();
-            retorno[i][2]=m.getTema();
+            retorno[i][1]=m.getHoras();
+            retorno[i][2]=m.getCreditos();
             i++;
         }        
         return retorno;

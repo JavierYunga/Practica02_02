@@ -8,13 +8,13 @@ package modelo;
 public class Materia {
     
     private String nombre;
-    private String nota;
-    private String tema;
+    private int horas;
+    private int creditos;
 
-    public Materia(String nombre, String nota, String tema) {
+    public Materia(String nombre, int horas, int creditos) {
         this.nombre = nombre;
-        this.nota = nota;
-        this.tema = tema;
+        this.horas = horas;
+        this.creditos = creditos;
     }
 
     public String getNombre() {
@@ -25,22 +25,23 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public String getNota() {
-        return nota;
+    public int getHoras() {
+        return horas;
     }
 
-    public void setNota(String nota) {
-        this.nota = nota;
+    public void setHoras(int horas) {
+        this.horas = horas;
     }
 
-    public String getTema() {
-        return tema;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setTema(String tema) {
-        this.tema = tema;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
-    
+
+   
     
     
 }
