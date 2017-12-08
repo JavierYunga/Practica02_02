@@ -198,6 +198,57 @@ public class GestionDato {
             return null;
         }
     }
+    public boolean persistMateriaList(List<Materia> materiaList) throws IOException
+    {
+        boolean retorno=true;
+        File directorio=new File("C:/Materia");
+        System.out.print((directorio.getPath()));
+        if(!directorio.exists())
+        {
+            directorio.mkdir();
+        }
+        for(Materia m:materiaList)
+        {
+            try
+            {
+                FileWriter ae=new FileWriter("C:/Mareria/DatosMateria.txt",true);
+                BufferedWriter escritura= new BufferedWriter(ae);
+                
+                escritura.append(m.toString());
+                escritura.newLine();
+         
+                escritura.close();
+                retorno=true;
+            }catch(IOException e1)
+            {
+                retorno=false;
+            }
+        }
+        
+        return retorno;
+    }
+     
+    public List<Materia> LeerMateriaList()
+    {
+        try
+        {
+            List<Materia> m= new ArrayList<Materia>();
+            FileReader ae = new FileReader("C:/Materia/DatosMateria.txt");
+            BufferedReader lectura = new BufferedReader(ae); 
+            String linea;
+            
+            
+           
+             
+            lectura.close();
+                
+            return m;
+                
+        }
+        catch(IOException e){
+            return null;
+        }
+    }
      
      
     

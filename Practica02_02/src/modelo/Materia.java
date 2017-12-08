@@ -41,6 +41,11 @@ public class Materia {
         this.creditos = creditos;
     }
 
+    @Override
+    public String toString() {
+        return   nombre + " " + horas + " " + creditos ;
+    }
+
    
     
     
