@@ -71,7 +71,7 @@ public class VentanaMateria extends JInternalFrame{
         this.encabezado[1]="Horas";
         this.encabezado[2]="Creditos";
         
-        this.datos = cargaDatosTabla(this.gestionDato.getDocenteList().size(),3);
+        this.datos = cargaDatosTabla(this.gestionDato.getMateriaList().size(),3);
         
         this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
         this.tabla = new JTable(modeloTabla);

@@ -211,7 +211,7 @@ public class GestionDato {
         {
             try
             {
-                FileWriter ae=new FileWriter("C:/Mareria/DatosMateria.txt",true);
+                FileWriter ae=new FileWriter("C:/Materia/DatosMateria.txt",true);
                 BufferedWriter escritura= new BufferedWriter(ae);
                 
                 escritura.append(m.toString());
