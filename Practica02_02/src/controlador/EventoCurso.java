@@ -20,6 +20,7 @@ import modelo.Curso;
 import modelo.Docente;
 import modelo.Materia;
 import vista.VentanaCurso;
+import libreria.GestionDato;
 
 /**
  *

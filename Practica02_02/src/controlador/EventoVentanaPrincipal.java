@@ -11,6 +11,7 @@ import vista.VentanaCurso;
 import vista.VentanaDocente;
 import vista.VentanaMateria;
 import vista.VentanaPrincipal;
+import libreria.GestionDato;
 
 /**
  *
@@ -19,7 +20,7 @@ import vista.VentanaPrincipal;
 public class EventoVentanaPrincipal implements ActionListener{
     
     private VentanaPrincipal ventana;
-    private GestionDato gD;
+    
 
     public EventoVentanaPrincipal(VentanaPrincipal ventana) {
         this.ventana = ventana;
@@ -33,13 +34,7 @@ public class EventoVentanaPrincipal implements ActionListener{
         this.ventana = ventana;
     }
 
-    public GestionDato getgD() {
-        return gD;
-    }
-
-    public void setgD(GestionDato gD) {
-        this.gD = gD;
-    }
+   
 
     @Override
     public void actionPerformed(ActionEvent e) {

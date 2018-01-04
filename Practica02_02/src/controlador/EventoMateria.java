@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import modelo.Docente;
 import modelo.Materia;
 import vista.VentanaMateria;
+import libreria.GestionDato;
 
 /**
  *

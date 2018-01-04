@@ -7,7 +7,7 @@ package vista;
 
 import controlador.EventoCurso;
 import controlador.EventoDocente;
-import controlador.GestionDato;
+import libreria.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;

@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.EventoMateria;
-import controlador.GestionDato;
+import libreria.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;

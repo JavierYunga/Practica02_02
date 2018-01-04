@@ -13,7 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import controlador.EventoVentanaPrincipal;
-import controlador.GestionDato;
+import libreria.GestionDato;
 import modelo.Curso;
 import modelo.Docente;
 import modelo.Materia;
